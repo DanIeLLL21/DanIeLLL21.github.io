@@ -12,10 +12,6 @@ let randomWords = [
 		hint:"	mobiles, ipads, laptops, television, newspapers, facebook, instagram..."
 	},
 	{
-		word:"another",
-		hint:"perseverance"
-	},
-	{
 		word:"google",
 		hint:"most famous search engine"
 	},
@@ -35,6 +31,18 @@ let randomWords = [
 	{
 		word:"recursion",
 		hint:"doing something over and over agian"
+	},
+	{
+		word:"privacy",
+		hint:"keeping yourself and your personal information data safe when off and online"
+	},
+	{
+		word:"teamwork",
+		hint:"working together cooperatively, pulling together, turning a group into a team"
+	},
+	{
+		word:"education",
+		hint:"is the process of facilitating learning, thinking, problem solving, creativity, and the acquisition of knowledge, skills, values, beliefs, and habits. It's also a word that has all 5 vowels."
 	}
 ]
 
@@ -49,6 +57,7 @@ let buttons = document.querySelector('.buttonscontainer')
 let drawArea = document.getElementById('drawarea')
 let playagainButton = document.getElementById('playagain')
 let clue = document.getElementById('hint')
+
 
 const canvas = document.getElementById('hangman');
 const context = canvas.getContext("2d");
@@ -115,6 +124,7 @@ clue.addEventListener('click', () => {
 	window.alert(hint)
 
 })
+
 
 function checkword() {
 
@@ -280,3 +290,4 @@ function Draw (steps) {
   
    } 
 }
+
