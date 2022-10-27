@@ -1,0 +1,282 @@
+let attempts = 0;
+let status = ""
+let hint = ""
+
+let blankHolder = [];
+
+// random rijeci u zasebni fajl pa ih includat u ovaj i displejat.
+// pushati kod na git hub i tamo ga displejati kao stranicu
+let randomWords = [
+	{
+		word:"media",
+		hint:"	mobiles, ipads, laptops, television, newspapers, facebook, instagram..."
+	},
+	{
+		word:"another",
+		hint:"perseverance"
+	},
+	{
+		word:"google",
+		hint:"most famous search engine"
+	},
+	{
+		word:"rhythm",
+		hint:"any regular recurring motion, symmetry"
+
+	},
+	{
+		word:"database",
+		hint:"collection of information organized in such a way that a computer program can quickly select desired pieces of data"
+	},
+	{
+		word:"youtube",
+		hint:"the world of video"
+	},
+	{
+		word:"recursion",
+		hint:"doing something over and over agian"
+	}
+]
+
+
+
+let alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","r","s","t","u","v","w","x","y"]
+
+let attemptCount = document.getElementById('attemptcount')
+let blankHolderPlace = document.getElementById('blankholder')
+
+let buttons = document.querySelector('.buttonscontainer')
+let drawArea = document.getElementById('drawarea')
+let playagainButton = document.getElementById('playagain')
+let clue = document.getElementById('hint')
+
+const canvas = document.getElementById('hangman');
+const context = canvas.getContext("2d");
+const gamedescp = document.getElementById('gamedescription')
+
+let defaultdescp = gamedescp.innerHTML;
+
+
+// Style of all letter buttons.
+
+let styles = {
+	button:{
+	height:"50px",
+	width:"50px",
+	fontSize:"20px",
+	color: "black",
+	disabled:false}
+}
+
+// Displaying and appending buttons with value.
+// mozda ne imati dva loopa za disjebl i ejenbl nego naci drug inacin a to napravit da lopp ne zauzima memoriju
+
+for(let i = 0 ; i < alphabet.length ; i++) {
+	
+	let button = document.createElement('button')
+	button.innerHTML = alphabet[i].toUpperCase();
+	button.value = alphabet[i];
+	button.style.height = styles.button.height;
+	button.style.width = styles.button.width;
+	button.style.fontSize = styles.button.fontSize;
+	button.style.color = styles.button.color;
+	button.disabled = false;
+	button.className = "batn"
+	buttons.appendChild(button)
+
+}
+
+let som = document.getElementsByClassName('batn')
+
+// dodati jos random rijeci u erej random rijeci.
+
+
+// Functions to start the game.
+
+window.addEventListener('load', spawnWord());
+
+playagainButton.addEventListener('click', () => {
+
+	spawnWord();
+
+})
+
+buttons.addEventListener('click', (e) => {	
+
+	checkLetter(e);
+	checkword()
+	
+})
+
+// naci nacin za displejat clue a ne imat window alert
+
+clue.addEventListener('click', () => {
+
+	window.alert(hint)
+
+})
+
+function checkword() {
+
+	let holderWord = blankHolder.join('');
+
+	if(word === holderWord) {
+
+		status = "YOU WIN";
+
+		playAgain();
+
+	} else if (attempts == 6) {
+		
+		status = "YOU LOSE"
+
+		playAgain();
+	}
+
+
+// Executing draw function to draw on each step.
+
+		Draw(attempts)
+
+}
+
+function playAgain () {
+
+	gamedescp.innerHTML = status;
+
+	for(let i = 0 ; i < som.length ; i++)	{
+
+			playagainButton.disabled = false;
+		 	som[i].disabled = true;
+
+		}
+
+}
+
+// imati razmak izmedu rijeci ako postoji vise od jedne odma na spawananjuuu.
+// makunti loopove i imati repeat unutar stringa il nesto slicno bez loopva.
+ 
+function spawnWord () {
+
+	 	const randomIndex = Math.floor(Math.random() * randomWords.length);
+		let randomWord = randomWords[randomIndex];
+
+		word = "";
+		blankHolder = [];
+		attempts = 0;
+		context.clearRect(0, 0, canvas.width, canvas.height)
+
+		for(let i = 0 ; i < som.length ; i++){
+		 	som[i].disabled = false;
+		}
+
+		for(let i = 0 ; i < randomWord.word.length ; i++) {
+
+			if(randomWord.word[i] === " ") {
+				
+				blankHolder.push("- ")
+
+			} else {
+
+				blankHolder.push("_ ")
+
+			}
+
+		}
+
+		playagainButton.disabled = true;
+		gamedescp.innerHTML = defaultdescp;
+		word = randomWord.word;
+		hint = randomWord.hint;
+		attemptCount.innerHTML = `You have ${attempts} attempts out of 6`;
+		blankHolderPlace.innerHTML = blankHolder.join('') 
+}
+
+
+// mozda ne imati includes prilikom pogreske nego chainat u loopu stejtment koji ce apat atetmpte
+
+
+function checkLetter (e) {
+
+    for(let i = 0 ; i < word.length ; i++){
+ 		
+       if(e.target.value === word[i]) {
+
+        e.srcElement.disabled = true;
+    		blankHolder[i] = e.target.value;
+
+    	 }
+
+    	if(word[i] === " ") {
+
+    		blankHolder[i] = " ";
+
+    	}
+
+    }
+
+   	if(!word.includes(e.target.value)) {
+
+ 		e.srcElement.disabled = true;
+ 		attemptCount.innerHTML = `You have ${attempts + 1} attempts out of 6`;
+		attempts++
+
+   	}
+   	    		
+		blankHolderPlace.innerHTML = blankHolder.join('') 
+}
+
+
+
+// Function to draw.
+
+function Draw (steps) {
+
+   switch (steps) {
+
+      case 1:
+        context.lineWidth = 4;
+        context.beginPath();
+        context.arc(100, 50, 25, 0, Math.PI*2, true);
+        context.closePath();
+        context.stroke();
+        break;
+      
+      case 2:
+        context.beginPath();
+        context.moveTo(100, 75);
+        context.lineTo(100, 140);
+        context.stroke();
+        break;
+
+      case 3:
+        context.beginPath();
+        context.moveTo(100, 85);
+        context.lineTo(60, 100);
+        context.stroke();
+        break;
+
+      case 4:
+        context.beginPath();
+        context.moveTo(100, 85);
+        context.lineTo(140, 100);
+        context.stroke();
+        break;
+
+      case 5:
+        context.beginPath();
+        context.moveTo(100, 140);
+        context.lineTo(80, 190);
+        context.stroke();
+        break;
+
+      case 6:
+        context.beginPath();
+        context.moveTo(100, 140);
+        context.lineTo(125, 190);
+        context.stroke();
+      break;
+
+  
+   } 
+}
