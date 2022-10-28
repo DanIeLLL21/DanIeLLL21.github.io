@@ -58,11 +58,17 @@ body {
 
 
 #playagain, #hint {
+
 	color: black;
 	height:50px;
 	width:100px;
+	
 }
 
+#clueText {
+	display:inline;
+	font-size:1px;
+}
 
 @media screen (min-width: 320px) {
  		

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>Hangman</title>
 	<link rel="stylesheet" href="index.css">
 
 </head>
@@ -13,16 +13,21 @@
 <div id="introcontainer">
 
 	<h1>HANGMAN</h1>
-		<p id="gamedescription">Use the alphabet below to guess the word, or click hint to get a clue.</p>
+	<p id="gamedescription">Use the alphabet below to guess the word, or click hint to get a clue.</p>
 	
 	<div class="buttonscontainer"></div>
 	<h2 id="blankholder"></h2>
+	<p>Your clue is <p id="clueText"></p></p>
 	<canvas id="hangman" width="180" height="250"></canvas>
-
 	<h3 id="attemptcount"></h3>
+
 	
-	<button  id="playagain">Play Again</button>
-	<button id="hint">Hint</button>
+	<ul>
+	<li>
+		<button  id="playagain">Play Again</button>
+		<button id="hint">Hint</button>
+	</li>
+	</ul>
 
 </div>
 

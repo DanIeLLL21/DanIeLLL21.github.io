@@ -58,6 +58,8 @@ let drawArea = document.getElementById('drawarea')
 let playagainButton = document.getElementById('playagain')
 let clue = document.getElementById('hint')
 
+let clueText = document.getElementById('clueText')
+
 
 const canvas = document.getElementById('hangman');
 const context = canvas.getContext("2d");
@@ -69,12 +71,18 @@ let defaultdescp = gamedescp.innerHTML;
 // Style of all letter buttons.
 
 let styles = {
-	button:{
+	button: {
 	height:"50px",
 	width:"50px",
 	fontSize:"20px",
 	color: "black",
-	disabled:false}
+	disabled:false
+},
+
+	clueText:{
+		fontSize:"21px",
+		fontWeight:"900"
+	}
 }
 
 // Displaying and appending buttons with value.
@@ -121,10 +129,11 @@ buttons.addEventListener('click', (e) => {
 
 clue.addEventListener('click', () => {
 
-	window.alert(hint)
+	clueText.innerHTML = hint;
+	clueText.style.fontSize = styles.clueText.fontSize;
+	clueText.style.fontWeight = styles.clueText.fontWeight;
 
 })
-
 
 function checkword() {
 
@@ -176,6 +185,9 @@ function spawnWord () {
 		attempts = 0;
 		context.clearRect(0, 0, canvas.width, canvas.height)
 
+		let wordlength = randomWord.length;
+
+
 		for(let i = 0 ; i < som.length ; i++){
 		 	som[i].disabled = false;
 		}
@@ -196,8 +208,8 @@ function spawnWord () {
 
 		playagainButton.disabled = true;
 		gamedescp.innerHTML = defaultdescp;
-		word = randomWord.word;
-		hint = randomWord.hint;
+		word = randomWord.word 
+		hint = randomWord.hint 
 		attemptCount.innerHTML = `You have ${attempts} attempts out of 6`;
 		blankHolderPlace.innerHTML = blankHolder.join('') 
 }
