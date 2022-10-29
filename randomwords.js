@@ -1,4 +1,4 @@
-export let randomWords [
+export let randomWords = [
 	{
 		word:"media",
 		hint:"	mobiles, ipads, laptops, television, newspapers, facebook, instagram..."
