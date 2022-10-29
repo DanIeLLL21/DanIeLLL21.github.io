@@ -1,7 +1,47 @@
-import {randomWords} from './randomwords.js'
 let attempts = 0;
 let status = ""
 let hint = ""
+
+
+let randomWords = [
+	{
+		word:"media",
+		hint:"	mobiles, ipads, laptops, television, newspapers, facebook, instagram..."
+	},
+	{
+		word:"google",
+		hint:"most famous search engine"
+	},
+	{
+		word:"rhythm",
+		hint:"any regular recurring motion, symmetry"
+
+	},
+	{
+		word:"database",
+		hint:"collection of information organized in such a way that a computer program can quickly select desired pieces of data"
+	},
+	{
+		word:"youtube",
+		hint:"the world of video"
+	},
+	{
+		word:"recursion",
+		hint:"doing something over and over agian"
+	},
+	{
+		word:"privacy",
+		hint:"keeping yourself and your personal information data safe when off and online"
+	},
+	{
+		word:"teamwork",
+		hint:"working together cooperatively, pulling together, turning a group into a team"
+	},
+	{
+		word:"education",
+		hint:"is the process of facilitating learning, thinking, problem solving, creativity, and the acquisition of knowledge, skills, values, beliefs, and habits. It's also a word that has all 5 vowels."
+	}
+]
 
 let blankHolder = [];
 
