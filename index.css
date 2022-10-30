@@ -66,9 +66,21 @@ body {
 }
 
 #clueText {
+
 	display:inline;
 	font-size:1px;
+	margin-bottom: 100px;
+
 }
+
+#setword {
+	margin:10px 0px 20px 0px;
+	width:200px;
+	height:40px;
+	color:black;
+
+}
+
 
 @media screen (min-width: 320px) {
  		

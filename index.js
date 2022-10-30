@@ -56,9 +56,10 @@ let blankHolderPlace = document.getElementById('blankholder')
 let buttons = document.querySelector('.buttonscontainer')
 let drawArea = document.getElementById('drawarea')
 let playagainButton = document.getElementById('playagain')
-let clue = document.getElementById('hint')
 
+let clue = document.getElementById('hint')
 let clueText = document.getElementById('clueText')
+let setword = document.getElementById('setword')
 
 
 const canvas = document.getElementById('hangman');
@@ -135,6 +136,7 @@ clue.addEventListener('click', () => {
 
 })
 
+
 function checkword() {
 
 	let holderWord = blankHolder.join('');
@@ -155,7 +157,7 @@ function checkword() {
 
 // Executing draw function to draw on each step.
 
-		Draw(attempts)
+	Draw(attempts)
 
 }
 
@@ -180,12 +182,15 @@ function spawnWord () {
 	 	const randomIndex = Math.floor(Math.random() * randomWords.length);
 		let randomWord = randomWords[randomIndex];
 
-		word = "";
+
+		clueText.innerHTML = "";
+		word = "";		
 		blankHolder = [];
 		attempts = 0;
 		context.clearRect(0, 0, canvas.width, canvas.height)
 
 		let wordlength = randomWord.length;
+
 
 
 		for(let i = 0 ; i < som.length ; i++){
@@ -194,16 +199,15 @@ function spawnWord () {
 
 		for(let i = 0 ; i < randomWord.word.length ; i++) {
 
-			if(randomWord.word[i] === " ") {
+			if(randomWord.word[i] === " ") {				
 				
 				blankHolder.push("- ")
 
 			} else {
 
 				blankHolder.push("_ ")
-
+				
 			}
-
 		}
 
 		playagainButton.disabled = true;
@@ -224,14 +228,15 @@ function checkLetter (e) {
  		
        if(e.target.value === word[i]) {
 
-        e.srcElement.disabled = true;
+        	e.srcElement.disabled = true;
     		blankHolder[i] = e.target.value;
 
-    	 }
+    	 }                                                                                                                                  
 
     	if(word[i] === " ") {
 
     		blankHolder[i] = " ";
+    		blankHolderPlace[i].innerHTML = " ";
 
     	}
 
@@ -245,7 +250,7 @@ function checkLetter (e) {
 
    	}
    	    		
-		blankHolderPlace.innerHTML = blankHolder.join('') 
+	blankHolderPlace.innerHTML = blankHolder.join('') 
 }
 
 
