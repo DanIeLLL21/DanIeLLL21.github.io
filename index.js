@@ -2,10 +2,7 @@ let attempts = 0;
 let status = ""
 let hint = ""
 
-let blankHolder = [];
 
-// random rijeci u zasebni fajl pa ih includat u ovaj i displejat.
-// pushati kod na git hub i tamo ga displejati kao stranicu
 let randomWords = [
 	{
 		word:"media",
@@ -45,6 +42,11 @@ let randomWords = [
 		hint:"is the process of facilitating learning, thinking, problem solving, creativity, and the acquisition of knowledge, skills, values, beliefs, and habits. It's also a word that has all 5 vowels."
 	}
 ]
+
+let blankHolder = [];
+
+// random rijeci u zasebni fajl pa ih includat u ovaj i displejat.
+// pushati kod na git hub i tamo ga displejati kao stranicu
 
 
 
