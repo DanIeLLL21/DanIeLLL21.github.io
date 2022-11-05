@@ -26,10 +26,6 @@ let randomWords = [
 		hint:"the world of video"
 	},
 	{
-		word:"recursion",
-		hint:"doing something over and over agian"
-	},
-	{
 		word:"privacy",
 		hint:"keeping yourself and your personal information data safe when off and online"
 	},
