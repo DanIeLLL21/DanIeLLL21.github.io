@@ -29,8 +29,21 @@ let randomWords = [
 		hint:"the world of video"
 	},
 	{
+<<<<<<< HEAD
 		word:"recursion",
 		hint:"doing something over and over agian"
+=======
+		word:"privacy",
+		hint:"keeping yourself and your personal information data safe when off and online"
+	},
+	{
+		word:"teamwork",
+		hint:"working together cooperatively, pulling together, turning a group into a team"
+	},
+	{
+		word:"education",
+		hint:"is the process of facilitating learning, thinking, problem solving, creativity, and the acquisition of knowledge, skills, values, beliefs, and habits. It's also a word that has all 5 vowels."
+>>>>>>> e1dfbe8df8920bf7dd97e02022502ddd28e3f259
 	}
 ]
 
