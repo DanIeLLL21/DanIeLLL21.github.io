@@ -1,12 +1,15 @@
-let attempts = 0;
-let status = ""
-let hint = ""
-
+let attempts;
+let status;
+let hint;
 
 let randomWords = [
 	{
 		word:"media",
 		hint:"	mobiles, ipads, laptops, television, newspapers, facebook, instagram..."
+	},
+	{
+		word:"another",
+		hint:"perseverance"
 	},
 	{
 		word:"google",
@@ -28,27 +31,15 @@ let randomWords = [
 	{
 		word:"recursion",
 		hint:"doing something over and over agian"
-	},
-	{
-		word:"privacy",
-		hint:"keeping yourself and your personal information data safe when off and online"
-	},
-	{
-		word:"teamwork",
-		hint:"working together cooperatively, pulling together, turning a group into a team"
-	},
-	{
-		word:"education",
-		hint:"is the process of facilitating learning, thinking, problem solving, creativity, and the acquisition of knowledge, skills, values, beliefs, and habits. It's also a word that has all 5 vowels."
 	}
 ]
 
+
 let blankHolder = [];
+
 
 // random rijeci u zasebni fajl pa ih includat u ovaj i displejat.
 // pushati kod na git hub i tamo ga displejati kao stranicu
-
-
 
 let alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","r","s","t","u","v","w","x","y"]
 
@@ -62,6 +53,10 @@ let playagainButton = document.getElementById('playagain')
 let clue = document.getElementById('hint')
 let clueText = document.getElementById('clueText')
 let setword = document.getElementById('setword')
+
+//selecting each button which are made with DOM
+
+let alphabetButtons = document.getElementsByClassName('alphabetButton')
 
 
 const canvas = document.getElementById('hangman');
@@ -78,14 +73,14 @@ let styles = {
 	height:"50px",
 	width:"50px",
 	fontSize:"20px",
-	color: "black",
-	disabled:false
+	color: "black"
 },
 
 	clueText:{
 		fontSize:"21px",
 		fontWeight:"900"
 	}
+
 }
 
 // Displaying and appending buttons with value.
@@ -100,14 +95,10 @@ for(let i = 0 ; i < alphabet.length ; i++) {
 	button.style.width = styles.button.width;
 	button.style.fontSize = styles.button.fontSize;
 	button.style.color = styles.button.color;
-	button.disabled = false;
-	button.className = "batn"
+	button.className = "alphabetButton"
 	buttons.appendChild(button)
 
 }
-
-let som = document.getElementsByClassName('batn')
-
 // dodati jos random rijeci u erej random rijeci.
 
 
@@ -128,7 +119,6 @@ buttons.addEventListener('click', (e) => {
 	
 })
 
-// naci nacin za displejat clue a ne imat window alert
 
 clue.addEventListener('click', () => {
 
@@ -156,9 +146,6 @@ function checkword() {
 		playAgain();
 	}
 
-
-// Executing draw function to draw on each step.
-
 	Draw(attempts)
 
 }
@@ -167,23 +154,20 @@ function playAgain () {
 
 	gamedescp.innerHTML = status;
 
-	for(let i = 0 ; i < som.length ; i++)	{
-
+	for(let i = 0 ; i < alphabetButtons.length ; i++)	{
 			playagainButton.disabled = false;
-		 	som[i].disabled = true;
-
+		 	alphabetButtons[i].disabled = true;
 		}
 
 }
 
-// imati razmak izmedu rijeci ako postoji vise od jedne odma na spawananjuuu.
+//imati razmak izmedu rijeci ako postoji vise od jedne odma na spawananjuuu.
 // makunti loopove i imati repeat unutar stringa il nesto slicno bez loopva.
- 
+
 function spawnWord () {
 
 	 	const randomIndex = Math.floor(Math.random() * randomWords.length);
 		let randomWord = randomWords[randomIndex];
-
 
 		clueText.innerHTML = "";
 		word = "";		
@@ -191,24 +175,15 @@ function spawnWord () {
 		attempts = 0;
 		context.clearRect(0, 0, canvas.width, canvas.height)
 
-		let wordlength = randomWord.length;
-
-
-
-		for(let i = 0 ; i < som.length ; i++){
-		 	som[i].disabled = false;
+		for(let i = 0 ; i < alphabetButtons.length ; i++)	{
+			alphabetButtons[i].disabled = false;
 		}
 
 		for(let i = 0 ; i < randomWord.word.length ; i++) {
-
-			if(randomWord.word[i] === " ") {				
-				
-				blankHolder.push("- ")
-
+			if(randomWord.word[i] === " ") {
+				blankHolder.push("-")
 			} else {
-
-				blankHolder.push("_ ")
-				
+				blankHolder.push("_ ")	
 			}
 		}
 
@@ -222,19 +197,23 @@ function spawnWord () {
 
 
 // mozda ne imati includes prilikom pogreske nego chainat u loopu stejtment koji ce apat atetmpte
-
-
 function checkLetter (e) {
 
-    for(let i = 0 ; i < word.length ; i++){
+    for(let i = 0 ; i < word.length ; i++) {
  		
        if(e.target.value === word[i]) {
 
         	e.srcElement.disabled = true;
     		blankHolder[i] = e.target.value;
 
-    	 }                                                                                                                                  
+    	 } else if (!word.includes(e.target.value)){
+    	 
+    	  	e.srcElement.disabled = true;
+ 			attemptCount.innerHTML = `You have ${attempts + 1} attempts out of 6`;
+			attempts++
+			break;
 
+    	 }                                                                                                                                  
     	if(word[i] === " ") {
 
     		blankHolder[i] = " ";
@@ -244,13 +223,6 @@ function checkLetter (e) {
 
     }
 
-   	if(!word.includes(e.target.value)) {
-
- 		e.srcElement.disabled = true;
- 		attemptCount.innerHTML = `You have ${attempts + 1} attempts out of 6`;
-		attempts++
-
-   	}
    	    		
 	blankHolderPlace.innerHTML = blankHolder.join('') 
 }

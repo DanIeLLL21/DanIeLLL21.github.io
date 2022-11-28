@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-export let name = "nesto";
-=======
 export let randomWords = [
 	{
 		word:"media",
@@ -33,4 +30,3 @@ export let randomWords = [
 	}
 ]
 
->>>>>>> 961488a42e214db8c6c7b8d126a7227029a10fc5
