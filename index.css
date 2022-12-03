@@ -1,132 +1,93 @@
 * {
-	margin:0;
-	padding:0;
-	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	font-family: sans-serif;
+	color :#FFFFFF
 }
+
 body {
-	font-family: 'Inter', sans-serif;
-	background-color:#6444C5;
+	background-color:#1864ab;
 }
 
-.container {
-	margin: 130px auto;
-	display:flex;
-	flex-direction:row;
-	justify-content:space-around;
+#introcontainer {
+	text-align: center;
 }
 
-.robot-info	{
-	font-size:12px;
-	color:grey;
-	font-weight:bold;
-	padding-bottom:10px;
+#introcontainer h1 {
+	font-size: 50px;	
+	font-weight: 600;
+	padding : 50px 0px 30px 0px;
 }
 
-.card {
-	height:600px;
-	width:400px;
-	border:1px solid black;
-	background-color:#080808;
-	border-radius:10px;
-	color:white;
+.buttonscontainer {
+	margin-bottom: 30px;
 }
 
-.first-info {
-	margin-bottom:24px;
+#introcontainer p {
+	font-size: 30px;
+	padding : 10px 0px 30px 0px;
+	font-weight: 0;
 }
 
-img {
-	width:175px;
-	height:175px;
-	margin-left:28%;
-	margin-top:20px;
+#hangman {
+	border: 5px solid #0D0D0D;
+	margin: 0px 0px 20px 0px;
+	height: 300px;
+	width: 300px;
+	text-align: center;
 }
 
-.card-text h3 {
-	padding-bottom:10px;
-	font-size:22px;
+#blankholder {
+	font-size:  30px;
+	margin-bottom: 40px;
 }
 
-.card-text p {
-	font-size:16px;
-}
-.card-text {
-	text-align:center;
-	margin-bottom:10px;
+#attemptcount {
+	margin :20px 0px 20px 0px;
+	font-size: 22px;
 }
 
-.card-buttons {
-	width:100%;
-	display:flex;
-	justify-content: center;
-	margin-bottom:25px;
+
+#playagain, #hint {
+	color: black;
+	height:50px;
+	width:100px;
 }
 
-.card-buttons button {
+#clueText {
+	display:inline;
+	font-size:1px;
+	margin-bottom: 100px;
+
+
+}
+
+#setword {
+	margin:10px 0px 20px 0px;
+	width:200px;
 	height:40px;
-	width:140px;
-	border-radius:8px;
-	margin-left:12px;
-	cursor:pointer;
-	font-weight:bold;
-}
-
-.button-active {
-	background-color:white;
 	color:black;
-}
-
-.button-disabled {
-	background-color:#6444C5;
-	color:white;
-}
-
-.card-information {
-	display:flex;
-	justify-content: space-evenly;
-	text-transform:uppercase;
-}
-
-.card-infomration span {
-	margin-left:14px;
-	border-left:1px solid white;
-}
-
-.card-information p {
-	padding-bottom:15px;
-	font-size:22px;
 
 }
-
-.card-information{
-	margin:40px 10px 40px 10px;
-
+#clueTextPlace {
+	text-decoration:underline;
+}
+.buttonscotnainer {
+	background-color:orange;
 }
 
-.card-information a{
-	color:grey;
-	font-size:12px;
-	padding-left:0px;
-	margin-bottom:10px;
-	font-weight:bold;	
-}
+@media screen (min-width: 320px) {
+ 		
+ 		#playagain, #hint{
+ 			margin-bottom: 30px;
+ 		}
 
-.footer-card {
-	text-align:center;
-}
+ 		#introcontainer h1 {
+ 			font-size: 30px;
+ 		}
 
-.footer-card p {
-	font-size:12px;
-	color:grey;
-	font-weight:bold;
-}
+ 		#introcontainer p {
+ 			font-size: 23px;
+ 		}
 
-.token-information {
-	border-left:1px solid white;
-	padding-left:55px;
-}
-
-
-span a{
-	padding-bottom:10px;
 }
