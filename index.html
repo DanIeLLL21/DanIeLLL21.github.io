@@ -3,92 +3,36 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-	<link rel="stylesheet" type="text/css" href="index.css">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto:wght@400;500;700&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+	<title>Hangman</title>
+	<link rel="stylesheet" href="index.css">
 
 </head>
 <body>
-<div class="container">
-	<div class="card">
-		<img src="robot-1.png" alt="" class="first-img">
-		<div class="card-text">
-		<h3 class="first-info">Best Yield</h3>
-		<p>The flagship yield autmation strategy. Funds optimized across multiple DeFi protocolos.</p>
-		</div>
-		<div class="card-information">
-			<span class="percent-information">
-				<a>Apy</a>
-				<p>116.61%</p>
-			</span>
-			<span class="token-information">
-				<a>Token</a>
-				<p>TOKEN</p>
-			</span>
-		</div>
-		<div class="card-buttons">
-		<button class="button-active">Launch</button>
-		<button class="button-disabled">Intergate</button>
-		</div>
-		<div class="footer-card">
-		<p>Powered By</p>
-		</div>
-	</div>
 
-	<div class="card">
-		<img src="robot-2.png" alt="">
-		<div class="card-text">
-		<h3>Protected Yield</h3>
-		<p class="robot-info">Senior Tranche</p>
-		<p>The forefront yield strategy amplified by the counterpart Junior Tranche</p>
-		</div>
-		<div class="card-information">
-			<span class="percent-information">
-				<a>Apy</a>
-				<p>116.61%</p>
-			</span>
-			<span class="token-information">
-				<a>Token</a>
-				<p>TOKEN</p>
-			</span>
-		</div>
-		<div class="card-buttons">
-		<button class="button-active">Launch</button>
-		<button class="button-disabled">Intergate</button>
-		</div>
-		<div class="footer-card">
-		<p>Powered By</p>
-		</div>
-	</div>
 
-	<div class="card">
-		<img src="robot-3.png" alt="">
-		<div class="card-text">
-		<h3>Boosted Yeld</h3>
-		<p class="robot-info">Junior Tranche</p>
-		<p>The forefront yield strategy amplified by the counterpart Senior Tranche</p>
-		</div>
-		<div class="card-information">
-			<span class="percent-information">
-				<a>Apy</a>
-				<p>116.61%</p>
-			</span>
-			<span class="token-information">
-				<a>Token</a>
-				<p>TOKEN</p>
-			</span>
-		</div>
-		<div class="card-buttons">
-		<button class="button-active">Launch</button>
-		<button class="button-disabled">Intergate</button>
-		</div>
-		<div class="footer-card">
-		<p>Powered By</p>
-		</div>
-	</div>
-</div>
+<div id="introcontainer">
+
+	<h1>HANGMAN</h1>
+	<p id="gamedescription">Use the alphabet below to guess the word, or click hint to get a clue.</p>
 	
+	<div class="buttonscontainer"></div>
+	<h2 id="blankholder"></h2>
+	<p id="clueTextPlace">Your clue is <p id="clueText"></p></p>
+	<canvas id="hangman" width="180" height="250"></canvas>
+	<h3 id="attemptcount"></h3>
+	
+	<ul>
+	<li>
+		<button  id="playagain">Play Again</button>
+		<button id="hint">Hint</button>
+	</li>
+		<button id="setword">Set Word</button>
+	</ul>
+
+</div>
+
 </body>
 </html>
+
+<script src="index.js"></script>
+
